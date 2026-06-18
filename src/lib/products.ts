@@ -201,8 +201,6 @@ function normalizePayload(payload: ProductPayload) {
 }
 
 export async function listProducts(): Promise<CmsProduct[]> {
-  await ensureSeed();
-
   const db = await getDatabase();
   const collection = db.collection(COLLECTION);
   const docs = await collection.find({}).sort({ sortOrder: 1, createdAt: 1 }).toArray();
